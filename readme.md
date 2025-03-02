@@ -1,0 +1,1 @@
+mgossip is a matching-gossip protocol implementation based on memberlist, you can use it in distributed system according to examples.
