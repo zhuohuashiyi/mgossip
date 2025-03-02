@@ -27,6 +27,17 @@ type MgossipConfig struct {
 	IsMgossip          bool
 }
 
+func NewDefaultMgossipConfig() *MgossipConfig {
+	return &MgossipConfig{
+		GossipNodes:        2,
+		RetransmitMult:     3,
+		UDPBufferSize:      1400,
+		SystemBroadcastMult: 1,
+		ProbeInterval:      1000,
+		IsMgossip:          true,
+	}
+}
+
 type Mgossip struct {
     Config *MgossipConfig
 	Broadcasts *TransmitLimitedQueue
