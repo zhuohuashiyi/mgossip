@@ -72,7 +72,7 @@ func NewMgossip(config *MgossipConfig) *Mgossip {
 	c.GossipNodes = config.GossipNodes
 	c.UDPBufferSize = config.UDPBufferSize
 	c.RetransmitMult = config.SystemBroadcastMult
-	c.ProbeInterval = time.Duration(config.ProbeInterval) * time.Second
+	c.ProbeInterval = time.Duration(config.ProbeInterval) * time.Millisecond
 	c.Name = fmt.Sprintf("%s:%d", config.AdvertiseAddr, config.BindPort)
 	c.IsMgossip = config.IsMgossip
 	c.GossipInterval = time.Duration(config.GossipInterval) * time.Second
