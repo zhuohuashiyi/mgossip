@@ -20,6 +20,8 @@ type MgossipConfig struct {
     BindPort           int
     MemberlistAddr     string
     MemberlistPort     int
+	GossipInterval     int
+    AdvertisePort      int
     Neighbors          []string
 	NotifyMsg          func(msg []byte)
 	MergeDelegate      func(buf []byte, join bool)
@@ -59,7 +61,7 @@ func NewMgossip(config *MgossipConfig) *Mgossip {
 		node:       snowflakeNode,
 	}
 
-	c := DefaultWANConfig()
+	c := DefaultLANConfig()
 	c.Delegate = mgossipInstance
 	c.BindPort = config.BindPort
 	c.BindAddr = config.BindAddr
@@ -73,6 +75,7 @@ func NewMgossip(config *MgossipConfig) *Mgossip {
 	c.ProbeInterval = time.Duration(config.ProbeInterval) * time.Second
 	c.Name = fmt.Sprintf("%s:%d", config.AdvertiseAddr, config.BindPort)
 	c.IsMgossip = config.IsMgossip
+	c.GossipInterval = time.Duration(config.GossipInterval) * time.Second
 	m, err := Create(c)
 	if err != nil {
 		panic(err)
